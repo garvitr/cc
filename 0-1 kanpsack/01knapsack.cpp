@@ -24,12 +24,14 @@ int main() {
         col(j) = value indexs (1->n)
         */
         int ans[w+1][n+1] = {0};
+        int chosen[w+1][n+1] = {0};
 
         for(int weight=1;weight<=w;weight++){
             for(int index=1;index<=n;index++){
                 if(wt[index]<=weight){
                     int ans_incl_val = ans[weight-wt[index]][index-1] + val[index];
                     int ans_excl_val = ans[weight][index-1];
+                    chosen[weight][index] = ans_incl_val>ans_excl_val ? 1 : 0;
                     ans[weight][index] = max(ans_incl_val,ans_excl_val);
                 }else{
                     ans[weight][index] = ans[weight][index-1];
@@ -38,6 +40,22 @@ int main() {
             }
         }
         cout<<ans[w][n]<<endl;
+
+        /*
+        chosen numbers
+        */
+        int weight = w;
+        int index = n;
+        int answer = 0;
+        while(weight>0 && index>0){
+            if(chosen[weight][index]){
+                weight  = weight - wt[index];
+                answer = answer + val[index];
+                cout<<"chosen index = "<<index<<endl;
+            }
+            index --;
+        }
+        cout<<answer<<endl;
 
     }
 
