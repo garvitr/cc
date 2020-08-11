@@ -11,22 +11,24 @@ int main() {
        long long int n;
        cin>>n;
        
-       vector<long long int> g[n+1];
+       unordered_map<long long int,int> g[n+1];
        long long int p[n+1];
        long long int a[n+1];
        long long int b[n+1];
        
        long long int d[n+1];
        
-        for(long long int i=1;i<=n;i++){
+        for(long long int i=0;i<=n;i++){
            d[i]=-1;
         }
        
        for(long long int i=1;i<=n-1;i++){
            long long int u,v;
            cin>>u>>v;
-           g[u].push_back(v);
-           g[v].push_back(u);
+        //   g[u].push_back(v);
+        //   g[v].push_back(u);
+            g[u][v]=1;
+            g[v][u]=1;
        }
        
        for(long long int i=1;i<=n;i++){
@@ -42,20 +44,14 @@ int main() {
        }
        
        for(long long int i=1;i<=n;i++){
-           int visited[n+1] = {0};
+           long long int visited[n+1] = {0};
            long long int city = p[i];
     
-           queue<long long int> q;
+           stack<long long int> q;
            q.push(city);
-
-        //   b[city] = b[city] - min(a[city],b[city]);
-
-        //   if(b[city]==0 && d[city]==-1 ){
-        //         d[city] = i;
-        //     }
            
            while(!q.empty()){
-               long long int source = q.front();
+               long long int source = q.top();
                q.pop();
                
             //   cout<<" city="<<city<<endl;
@@ -67,27 +63,23 @@ int main() {
                   visited[source]=1;
                   
                    b[source] = b[source] - min(a[city],b[source]);
-                    if(b[source]==0 && d[source]==-1 ){
+                    if(b[source]<=0 && d[source]==-1){
                          d[source] = i;
                     }
               }
                
-               for(long long int child : g[source]){
-                  if(!visited[child]){
-                       q.push(child);
-
-                        // b[child] = b[child] - min(a[city],b[child]);
-                        // if(b[child]==0 && d[child]==-1 ){
-                        //      d[child] = i;
-                        // }
+               for(auto child : g[source]){
+                  if(child.second && !visited[child.first]){
+                       q.push(child.first);
                   }
                }
            }
            
-            for(long long int child : g[city]){
-
-                g[city].erase(std::remove(g[city].begin(), g[city].end(), child), g[city].end()); 
-                g[child].erase(std::remove(g[child].begin(), g[child].end(), city), g[child].end()); 
+            for(auto child : g[city]){
+                g[city][child.first]=0;
+                g[child.first][city]=0;
+                // g[city].erase(std::remove(g[city].begin(), g[city].end(), child), g[city].end()); 
+                // g[child].erase(std::remove(g[child].begin(), g[child].end(), city), g[child].end()); 
 
             }
         //   cout<<" fruits left after visiting node"<<city<<endl;
@@ -98,7 +90,7 @@ int main() {
        }
        
     //   cout<<"-------";
-       for(int i=1;i<=n;i++){
+       for(long long int i=1;i<=n;i++){
            cout<<d[i]<<" ";
        }
       
