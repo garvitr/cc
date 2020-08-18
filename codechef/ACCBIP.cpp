@@ -22,55 +22,6 @@ long long int fun(long long int num,int colour,vector<long long int> lines_set[]
         return 0;
     }
     
-    // long long int index=0;
-    // while(index<lines.size() && lines[index]==0){
-    //     index++;
-    // }
-    
-    // while(num>0  && lines.size()!=0){
-        
-    //     if(num>lines[0]){
-    //         num = num - lines[0];
-    //         lines.erase(lines.begin());
-    //     }else{
-    //         lines[0] = lines[0] - num;
-    //         break;
-    //     }
-    // }
-    
-    // cout<<"lines after removal"<<endl;
-    // for(int i=0;i<lines.size();i++){
-    //     cout<<lines[i];
-    // }cout<<endl;
-    
-    // long long int ans=0;
-    
-    // for(long long int i=index;i<lines.size()-2;i++){
-    //     // if(lines[i]<=0){
-    //     //     continue;
-    //     // }
-    //     for(long long int j=i+1;j<lines.size()-1;j++){
-    //         // if(lines[j]==0){
-    //         //     continue;
-    //         // }
-    //         for(long long int k=j+1;k<lines.size();k++){
-    //             // if(lines[k]==0){
-    //             //     continue;
-    //             // }
-    //             ans = ans + lines[i]*lines[j]*lines[k];
-    //         }
-    //     }
-    // }
-    
-    // cout<<" ans = "<<ans<<endl;
-    
-    // return ans;
-    
-    // if(lines_set[colour].size()-num>=3){
-    //     return ncr(lines_set[colour].size()-num,3);
-    // }
-    // return 0;
-    
     
     
     // --------------
@@ -139,14 +90,6 @@ int main() {
           sort(lines_set.begin(),lines_set.end());
            lines[i] = lines_set;
        }
-       
-    //   cout<<" priniting line set"<<endl;
-    //   for(int i=1;i<=C;i++){
-    //       cout<<" for colour = "<<i<<endl;
-    //       for(int j=0;j<lines[i].size();j++){
-    //           cout<<lines[i][j];
-    //       }cout<<"----"<<endl;
-    //   }
        
        
        long long int dp[K+1][C+1];
