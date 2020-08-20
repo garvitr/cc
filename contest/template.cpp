@@ -15,6 +15,12 @@ typedef vector<vl> vvl;
 #define pb push_back
 #define fi first
 #define se second
+#define sortv(a) sort(a.begin(),a.end())
+#define sorta(a,n) sort(a,a+n)
+#define maxa(a,n) *max_element(a,a+n)
+#define mina(a,n) *min_element(a,a+n)
+#define maxv(v) *max_element(v.begin(),v.end())
+#define minv(v) *min_element(v.begin(),v.end())
 #define all(vec) vec.begin(),vec.end()
 #define rall(vec) vec.rbegin(),vec.rend()
 #define sz(r) r.size()
@@ -40,6 +46,33 @@ vector <ll> g[MX];
 vector <ll> v(MX);
 bool vis[MX];
 
+//Convert String to vector of INT
+template <typename T>
+vl to_int(T num)
+{
+	vl val;
+	for0(i, num.size()) {
+		val.pb(num.at(i) - '0');
+	}
+	return val;
+}
+
+//Reads graph for n nodes;
+template <typename T>
+void read_graph(T num)
+{
+	for1(i, num) {
+		ll u, v;
+		cin >> u >> v;
+		g[u].pb(v);
+		g[v].pb(u);
+	}
+
+	return;
+}
+
+
+
 int main() {
 
 	ios_base::sync_with_stdio(false);
@@ -54,17 +87,15 @@ int main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		ll ans = 0;
-		ll n;
-		cin >> n;
-
-		vl v;
-		forr1(i, n) {
-			v.pb(i);
+		string s;
+		cin >> s;
+		vl v = to_int(s);
+		for0(i, v.size()) {
+			cout << v[i] << " ";
 		}
-
-		ans = sum(v);
-		cout << ans << endl;
+		// cin >> s;
+		// cout << to_int(s);
+		// cout << ans << endl;
 	}
 
 
