@@ -18,6 +18,7 @@ typedef vector<vl> vvl;
 #define all(vec) vec.begin(),vec.end()
 #define rall(vec) vec.rbegin(),vec.rend()
 #define sz(r) r.size()
+#define zero(a) memset(a, 0, sizeof(a));
 #define sum(v) accumulate(v.begin(),v.end(),0)
 #define remi(v, i) (v.erase(v.begin()+i))
 #define for0(i, n) for (ll i = 0; i < (ll)(n); ++i) // 0 based indexing
@@ -42,6 +43,8 @@ bool vis[MX];
 int main() {
 
 	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	cout.precision(10);
 
 #ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
