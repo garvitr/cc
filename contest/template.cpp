@@ -161,6 +161,8 @@ int main() {
 		print_array(a, n);
 		sorta(a, n);
 		print_array(a, n);
+		reverse(a, a + n);
+		print_array(a, n);
 
 	}
 
