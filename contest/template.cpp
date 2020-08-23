@@ -84,18 +84,16 @@ vl read_vector(T num)
 	return v;
 }
 
-template <typename T>
-ll * read_array(T num)
+template <typename A, typename T>
+void read_array(A a, T num)
 {
-	ll a[num];
 	for0(i, num) {
 		ll temp;
 		cin >> temp;
 		a[i] = temp;
-		DB(a[i])
 	}
 
-	return a;
+	return ;
 }
 
 template <typename T>
@@ -156,6 +154,13 @@ int main() {
 		print_vector(v);
 		DB(cpresent(v, 3))
 		DB(cpresent(v, 100))
+
+		ll a[n];
+		zero(a);
+		read_array(a, n);
+		print_array(a, n);
+		sorta(a, n);
+		print_array(a, n);
 
 	}
 

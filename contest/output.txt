@@ -5,3 +5,5 @@ sum(v)=14
 4 4 3 2 1 
 cpresent(v, 3)=1
 cpresent(v, 100)=0
+4 3 2 1 5 
+1 2 3 4 5 
