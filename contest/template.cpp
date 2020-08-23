@@ -71,6 +71,58 @@ void read_graph(T num)
 	return;
 }
 
+template <typename T>
+void read_vector(vl v, T num)
+{
+	for0(i, num) {
+		ll temp;
+		cin >> temp;
+		v.pb(temp);
+	}
+
+	return;
+}
+
+template <typename T>
+void read_array(ll a[], T num)
+{
+	for0(i, num) {
+		ll temp;
+		cin >> temp;
+		a[i] = temp;
+	}
+
+	return;
+}
+
+template <typename T>
+void print_vector(vl v, T num)
+{
+	for0(i, num) {
+		cout << v[i] << " ";
+	} cout << endl;
+
+	return;
+}
+
+template <typename T>
+void print_array(ll a[], T num)
+{
+	for0(i, num) {
+		cout << a[i] << " ";
+	} cout << endl;
+
+	return;
+}
+
+template <typename T>
+void clear_graph()
+{
+	zero(g)
+
+	return;
+}
+
 
 
 int main() {
@@ -86,17 +138,26 @@ int main() {
 
 	int t;
 	cin >> t;
+	DB(t)
 	while (t--) {
-		string s;
-		cin >> s;
-		vl v = to_int(s);
-		for0(i, v.size()) {
-			cout << v[i] << " ";
-		}
+
+		ll n;
+		cin >> n;
+		DB(n)
+		vl v;
+		ll a[n];
+		read_vector(v, n);
+		read_array(a, n);
+
+		print_vector(v, n);
+		print_array(a, n);
+
 		// cin >> s;
 		// cout << to_int(s);
 		// cout << ans << endl;
 	}
+
+	return 0;
 
 
 }
