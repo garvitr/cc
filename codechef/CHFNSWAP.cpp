@@ -13,10 +13,12 @@ typedef vector<vl> vvl;
 #define MOD1 1000000007
 #define MOD2 1000000009
 #define pb push_back
+#define mp make_pair
 #define fi first
 #define se second
 #define sortv(a) sort(a.begin(),a.end())
 #define sorta(a,n) sort(a,a+n)
+#define rsortv(a) sort(a.rbegin(),a.rend())
 #define maxa(a,n) *max_element(a,a+n)
 #define mina(a,n) *min_element(a,a+n)
 #define maxv(v) *max_element(v.begin(),v.end())
@@ -57,7 +59,7 @@ vl to_int(T num)
 	return val;
 }
 
-//Reads graph for n nodes;
+// Reads graph for n nodes;
 template <typename T>
 void read_graph(T num)
 {
@@ -116,7 +118,7 @@ void print_array(A a, T num)
 	return;
 }
 
-template <typename T>
+// template <typename T>
 void clear_graph()
 {
 	zero(g)
@@ -132,39 +134,53 @@ int main() {
 	cin.tie(0);
 	cout.precision(10);
 
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+// 	freopen("input.txt", "r", stdin);
+// 	freopen("output.txt", "w", stdout);
+// #endif
 
-	int t;
+	ll k;
+	cin >> k;
+	ll t;
 	cin >> t;
-	DB(t)
 	while (t--) {
 
 		ll n;
 		cin >> n;
-		DB(n)
-		vl v = read_vector(n);
 
-		sort(all(v));
-		DB(sum(v))
-		print_vector(v);
-		sort(rall(v));
-		print_vector(v);
-		DB(cpresent(v, 3))
-		DB(cpresent(v, 100))
+		ll i = 0;
+		ll j = n - 1;
+		ll arr[n];
+		ll lsum = 0;
+		ll rsum = 0;
 
-		ll a[n];
-		zero(a);
-		read_array(a, n);
-		print_array(a, n);
-		sorta(a, n);
-		print_array(a, n);
-		reverse(a, a + n);
-		print_array(a, n);
+		while (i <= j) {
+			// DB2(i, j);
+			// DB2(lsum, rsum);
+			if (lsum < rsum) {
+				lsum += pow(i + 1, k);
+				arr[i] = 1;
+				i++;
+
+			} else {
+				rsum += pow(j + 1, k);
+				arr[j] = 0;
+				j--;
+
+			}
+			// DB2(lsum, rsum);
+		}
+		cout << abs(lsum - rsum) << endl;
+		for0(index, n) {
+			cout << arr[index];
+		} cout << endl;
+
+		// DB(n);
+
+
 
 	}
+
 
 	return 0;
 
